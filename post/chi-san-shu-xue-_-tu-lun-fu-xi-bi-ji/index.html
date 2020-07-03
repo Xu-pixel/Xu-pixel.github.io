@@ -1,94 +1,114 @@
-<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
-
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>离散数学_图论复习笔记 | Gridea</title>
-<meta name="description" content="温故而知新">
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="shortcut icon" href="https://Xu-pixel.github.io/favicon.ico?v=1593740927924">
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="shortcut icon" href="https://Xu-pixel.github.io/favicon.ico?v=1593740983807">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://Xu-pixel.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="离散数学_图论复习笔记 | Gridea - Atom Feed" href="https://Xu-pixel.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+    <meta name="description" content="5.图的基本概念
+1）无向图
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+度数为奇数的结点个数为偶数。
 
 
+握手定理：度数等于边数的两倍。
+
+
+2）割集
+条件：连通图G中，
+
+移去该集合中的所有支路，图G的连通分支数变为2。
+移去该集中的支路时，只保留一个，图G仍然连通。
+
+总之..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
   </head>
   <body>
-  
-    <nav class="navbar border fixed split-nav">
-  <div class="nav-brand">
-    <h3><a href="https://Xu-pixel.github.io">Gridea</a></h3>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://Xu-pixel.github.io">
+  <img class="avatar" src="https://Xu-pixel.github.io/images/avatar.png?v=1593740983807" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
   </div>
-  <div class="collapsible">
-    <input id="collapsible1" type="checkbox" name="collapsible1">
-    <button>
-      <label for="collapsible1">
-        <div class="bar1"></div>
-        <div class="bar2"></div>
-        <div class="bar3"></div>
-      </label>
-    </button>
-    <div class="collapsible-body">
-      <ul class="inline">
-        
-          <li>
-            
-              <a href="/" class="menu">
-                首页
-              </a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="/archives" class="menu">
-                归档
-              </a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="/tags" class="menu">
-                标签
-              </a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="/post/about" class="menu">
-                关于
-              </a>
-            
-          </li>
-        
-      </ul>
-    </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/Xu-pixel" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
   </div>
-</nav>
+</div>
 
-    <div id="top" class="row site">
-      <div class="sm-12 md-8 col">
-        <div class="paper">
-          <article class="article">
-            <h1>离散数学_图论复习笔记</h1>
-            <p class="article-meta">
-              2020-07-03
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              离散数学_图论复习笔记
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-07-03
+              </span>
+              <span>
+                3 min read
+              </span>
               
-            </p>
+            </div>
             
-            <div class="post-content">
-              <h1 id="5图的基本概念">5.图的基本概念</h1>
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h1 id="5图的基本概念">5.图的基本概念</h1>
 <h3 id="1无向图">1）无向图</h3>
 <ol>
 <li>
@@ -171,104 +191,95 @@
 <p>任何两个元素互不为前缀。</p>
 <figure data-type="image" tabindex="3"><img src="C:%5CUsers%5Cwei%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200610113343085.png" alt="image-20200610113343085" loading="lazy"></figure>
 
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#5%E5%9B%BE%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5">5.图的基本概念</a><br>
+*
+<ul>
+<li><a href="#1%E6%97%A0%E5%90%91%E5%9B%BE">1）无向图</a></li>
+<li><a href="#2%E5%89%B2%E9%9B%86">2）割集</a></li>
+</ul>
+</li>
+<li><a href="#6%E7%89%B9%E6%AE%8A%E7%9A%84%E5%9B%BE">6.特殊的图</a><br>
+*
+<ul>
+<li><a href="#1%E4%BA%8C%E9%83%A8%E5%9B%BE">1）二部图</a></li>
+<li><a href="#2%E6%AC%A7%E6%8B%89%E5%9B%BE">2）欧拉图</a></li>
+<li><a href="#3%E5%93%88%E5%AF%86%E9%A1%BF%E5%9B%BE">3）哈密顿图</a></li>
+<li><a href="#4-%E5%B9%B3%E9%9D%A2%E5%9B%BE">4)  平面图</a></li>
+</ul>
+</li>
+<li><a href="#7%E6%A0%91">7.树</a></li>
+</ul>
+
+              </div>
             </div>
           </article>
         </div>
-        <div class="paper" data-aos="fade-in">
-          
-            <div class="next-post">
-              <div class="next">
-                下一篇
-              </div>
-              <a href="https://Xu-pixel.github.io/post/hello-gridea/">
-                <h3 class="post-title">
-                  Hello Gridea
-                </h3>
-              </a>
-            </div>
-          
-        </div>
-        
-      </div>
 
-      <div class="sm-12 md-4 col sidebar">
-  <div class="paper info-container">
-    <img src="https://Xu-pixel.github.io/images/avatar.png?v=1593740927924" class="no-responsive avatar">
-    <div class="text-muted">温故而知新</div>
-    <div class="social-container">
-      
         
-      
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://Xu-pixel.github.io/post/hello-gridea/">
+              <h3 class="post-title">
+                Hello Gridea
+              </h3>
+            </a>
+          </div>
         
-      
+
         
-      
-        
-      
-        
-      
-    </div>
-  </div>
-  <div class="paper">
-    <div class="sidebar-title">
-      最新文章
-    </div>
-    <div class="row">
-      <ul>
-        
-          
-            <li>
-              <a href="https://Xu-pixel.github.io/post/about/">关于</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://Xu-pixel.github.io/post/chi-san-shu-xue-_-tu-lun-fu-xi-bi-ji/">离散数学_图论复习笔记</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://Xu-pixel.github.io/post/hello-gridea/">Hello Gridea</a>
-            </li>
-          
-        
-      </ul>
-    </div>
-  </div>
-  <div class="paper">
-    <div class="sidebar-title">
-      标签列表
-    </div>
-    <div class="row">
-      
-        <a href="https://Xu-pixel.github.io/tag/WQJgG-wQ5/" class="badge secondary">
-          Gridea
-        </a>
-      
-    </div>
-  </div>
-  <div class="paper">
-    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://Xu-pixel.github.io/atom.xml" target="_blank">RSS</a>
-  </div>
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://Xu-pixel.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
 </div>
 
-
+      </div>
     </div>
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      hljs.initHighlightingOnLoad()
 
-<script type="application/javascript">
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
 
-AOS.init();
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
 
-hljs.initHighlightingOnLoad()
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
 
-</script>
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
 
-
-
-
+    </script>
   </body>
 </html>
