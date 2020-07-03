@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Xu-pixel.github.io</id>
-    <title>Awi&apos;s site</title>
-    <updated>2020-07-03T03:03:29.385Z</updated>
+    <title>pix Xu&apos;s site</title>
+    <updated>2020-07-03T03:06:18.168Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Xu-pixel.github.io"/>
     <link rel="self" href="https://Xu-pixel.github.io/atom.xml"/>
     <subtitle>好好学习</subtitle>
     <logo>https://Xu-pixel.github.io/images/avatar.png</logo>
     <icon>https://Xu-pixel.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2020, Awi&apos;s site</rights>
+    <rights>All rights reserved 2020, pix Xu&apos;s site</rights>
     <entry>
         <title type="html"><![CDATA[离散数学_图论复习笔记]]></title>
         <id>https://Xu-pixel.github.io/post/chi-san-shu-xue-_-tu-lun-fu-xi-bi-ji/</id>
