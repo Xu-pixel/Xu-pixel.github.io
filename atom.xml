@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Xu-pixel.github.io</id>
     <title>Xup&apos;s blog</title>
-    <updated>2020-07-03T08:52:16.991Z</updated>
+    <updated>2020-07-03T09:10:43.971Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Xu-pixel.github.io"/>
     <link rel="self" href="https://Xu-pixel.github.io/atom.xml"/>
@@ -77,7 +77,7 @@
 <p>n(n≥3）阶简单平面图是极大平面图当且仅当他连通且每个面的次数为3。如果为4及以上的话，说明还能画一条对角线，那就不是极大了。</p>
 <p><strong>对偶图</strong></p>
 <p>面变成点，点变成面，和原来的边交叉画一条边。</p>
-<img src="C:\Users\wei\AppData\Roaming\Typora\typora-user-images\image-20200606173716609.png" alt="image-20200606173716609" style="zoom:50%;" />
+<figure data-type="image" tabindex="2"><img src="https://Xu-pixel.github.io/post-images/1593766409793.png" alt="" loading="lazy"></figure>
 <p><strong>欧拉公式</strong></p>
 <p>G是平面连通图，n个结点，m条边，r个面，则有</p>
 <p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>−</mo><mi>m</mi><mo>+</mo><mi>r</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">n-m+r=2
@@ -94,9 +94,10 @@
 <p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>W</mi><mo>(</mo><mi>t</mi><mo>)</mo><mo>=</mo><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>t</mi></munderover><msub><mi>w</mi><mi>i</mi></msub><mi>l</mi><mo>(</mo><msub><mi>v</mi><mi>i</mi></msub><mo>)</mo></mrow><annotation encoding="application/x-tex">W(t)=\sum_{i=1}^tw_il(v_i)
 </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">W</span><span class="mopen">(</span><span class="mord mathdefault">t</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:3.05823em;vertical-align:-1.277669em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.7805610000000003em;"><span style="top:-1.872331em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.050005em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3000050000000005em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.277669em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.02691em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span></p>
 <p>就是每一个结点的 深度×结点的权 的和。</p>
-<img src="C:\Users\wei\AppData\Roaming\Typora\typora-user-images\image-20200608175213162.png" alt="image-20200608175213162" style="zoom:80%;" /> 
+<figure data-type="image" tabindex="3"><img src="https://Xu-pixel.github.io/post-images/1593766474123.png" alt="" loading="lazy"></figure>
 <p><strong>前缀码：</strong></p>
 <p>任何两个元素互不为前缀。</p>
-<img src="C:\Users\wei\AppData\Roaming\Typora\typora-user-images\image-20200610113343085.png" alt="image-20200610113343085" style="zoom:80%;" />]]></content>
+<figure data-type="image" tabindex="4"><img src="https://Xu-pixel.github.io/post-images/1593766483347.png" alt="" loading="lazy"></figure>
+]]></content>
     </entry>
 </feed>
