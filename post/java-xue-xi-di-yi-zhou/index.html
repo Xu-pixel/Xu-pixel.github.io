@@ -30,33 +30,9 @@
       
         <div class="animated fadeInLeft" style="animation-delay: 0.4s">
           <p class="my-4 text-gray-600 font-light hidden lg:block">
-            好好学习
+            文章目录
           </p>
-          <div class="animated fadeInLeft social-container hidden lg:block" style="animation-delay: 0.6s">
-            
-              
-                <a href="https://github.com/Xu-pixel" target="_blank" class="mr-4 text-xl text-gray-400 font-light hover:text-gray-900">
-                  <i class="ri-github-line"></i>
-                </a>
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
+          <div class="toc-container hidden lg:block">
             
           </div>
         </div>
@@ -101,35 +77,115 @@
 </div>
 <div class="mask" onclick="closeMenu()">
 </div>
-      <div class="content-wrapper py-32 lg:p-8 lg:w-3/4">
-        <h2 class="text-lg text-gray-700 mb-8">
-          <i class="ri-bookmark-line"></i> Gridea
-        </h2>
-        
-  <section class="post-item md:flex pb-12 animated fadeIn" :style="{ 'animation-delay': `${0 * 0.2}s` }">
-    
-      <a href="https://Xu-pixel.github.io/post/hello-gridea/" class="feature-image-wrapper bg-gray-100 rounded-lg flex-shrink-0 mr-8 w-full h-56 h-32 md:w-56 md:h-40">
-        <div class="post-feature-image lazy w-full h-56 h-32 md:w-56 md:h-40" data-bg="'https://Xu-pixel.github.io/post-images/hello-gridea.png'">
+      <div class="content-wrapper py-32 lg:p-8 lg:w-3/4 post-detail animated fadeIn">
+        <h1 class="text-3xl font-bold lg:mt-16">Java学习第一周</h1>
+        <div class="text-sm text-gray-700 lg:my-8">
+          2020-07-06 / 3 min read
         </div>
-      </a>
-    
-    <div class="content">
-      <a href="https://Xu-pixel.github.io/post/hello-gridea/">
-        <h2 class="post-title text-xl font-extrabold mt-5 md:mt-0">Hello Gridea</h2>
-      </a>
-      <div class="post-abstract text-gray-700 font-light my-4">
-        <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
+        
+        <div class="post-content yue">
+          <blockquote>
+<p>记录一下学到的，懂了就不记辽~</p>
+</blockquote>
+<ol>
+<li>
+<p><strong>数组的声明和初始化</strong></p>
+<pre><code class="language-java">//动态初始化
+int[] intArray = new int[number];
+//或者
+int intArray[] = new int[number];
 
-      </div>
-      <div class="text-gray-400 text-sm font-light">2018-12-12 / 2 min read</div>
-    </div>
-  </section>
+//静态初始化
+int[] intArray = {1,2,3,4};
+//或者
+int intArray[] = {1,2,3,4};
+</code></pre>
+</li>
+<li>
+<p><strong>控制台输入</strong></p>
+<p>Java 可以使用 <code>java.util</code> 包下的<code>Scanner</code> 类来获取用户的输入。使用 <code>import java.util.Scanner;</code> 即可导入 Scanner。</p>
+<pre><code class="language-java">//从键盘输入三个整数，分别计算它们的累加值与平均数；
+import java.util.Scanner;
 
-        <div class="pagination-container animated fadeIn">
-  
-  
-</div>
+public class week1_4 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);//实例化Scanner类；
+        int num[] = new int[3];
+        int sum=0;
+        for (int i = 0; i &lt; 3; i++) {
+            num[i] = scanner.nextInt();//使用nextInt方法读取控制台中的整数；
+            sum+=num[i];
+        }
+        System.out.println(&quot;累加值为&quot;+sum);
+        System.out.println(&quot;平均值为&quot;+sum/3);
+        scanner.close();//关闭资源；
+    }
+}
+</code></pre>
+<p><strong>Scanner</strong>类常用方法：</p>
+<p><code>bool hasNextInt()</code> 判断下一个输入是不是整数，若是则返回true；其它类型的以此类推。</p>
+<p><code>int nextInt()</code>读取下一个整数输入；其他类型的以此类推。</p>
+<p><code>String next()</code>不能读空格；</p>
+<p><code>String nextLine()</code>能读空格；</p>
+<blockquote>
+<pre><code class="language-java">//摘自菜鸟教程https://www.runoob.com/java/java-scanner-class.html
+import java.util.Scanner;
+ 
+public class ScannerDemo {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        // 从键盘接收数据
+        int i = 0;
+        float f = 0.0f;
+        System.out.print(&quot;输入整数：&quot;);
+        if (scan.hasNextInt()) {
+            // 判断输入的是否是整数
+            i = scan.nextInt();
+            // 接收整数
+            System.out.println(&quot;整数数据：&quot; + i);
+        } else {
+            // 输入错误的信息
+            System.out.println(&quot;输入的不是整数！&quot;);
+        }
+        System.out.print(&quot;输入小数：&quot;);
+        if (scan.hasNextFloat()) {
+            // 判断输入的是否是小数
+            f = scan.nextFloat();
+            // 接收小数
+            System.out.println(&quot;小数数据：&quot; + f);
+        } else {
+            // 输入错误的信息
+            System.out.println(&quot;输入的不是小数！&quot;);
+        }
+        scan.close();
+    }
+}
+</code></pre>
+</blockquote>
+</li>
+</ol>
+
+        </div>
+
+        
+
+
+        <div class="flex justify-between py-8">
+          
+
+          
+            <div class="next-post">
+              <a href="https://Xu-pixel.github.io/post/chi-san-shu-xue-_-tu-lun-fu-xi-bi-ji/">
+                <h3 class="post-title">
+                  离散数学_图论复习笔记
+                  <i class="ri-arrow-right-line"></i>
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+
+        
 
       </div>
     </div>

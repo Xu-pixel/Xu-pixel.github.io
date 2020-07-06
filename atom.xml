@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Xu-pixel.github.io</id>
     <title>清苦食铺</title>
-    <updated>2020-07-05T03:31:12.958Z</updated>
+    <updated>2020-07-06T02:00:37.430Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Xu-pixel.github.io"/>
     <link rel="self" href="https://Xu-pixel.github.io/atom.xml"/>
@@ -10,6 +10,94 @@
     <logo>https://Xu-pixel.github.io/images/avatar.png</logo>
     <icon>https://Xu-pixel.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 清苦食铺</rights>
+    <entry>
+        <title type="html"><![CDATA[Java学习第一周]]></title>
+        <id>https://Xu-pixel.github.io/post/java-xue-xi-di-yi-zhou/</id>
+        <link href="https://Xu-pixel.github.io/post/java-xue-xi-di-yi-zhou/">
+        </link>
+        <updated>2020-07-06T01:58:53.000Z</updated>
+        <content type="html"><![CDATA[<blockquote>
+<p>记录一下学到的，懂了就不记辽~</p>
+</blockquote>
+<ol>
+<li>
+<p><strong>数组的声明和初始化</strong></p>
+<pre><code class="language-java">//动态初始化
+int[] intArray = new int[number];
+//或者
+int intArray[] = new int[number];
+
+//静态初始化
+int[] intArray = {1,2,3,4};
+//或者
+int intArray[] = {1,2,3,4};
+</code></pre>
+</li>
+<li>
+<p><strong>控制台输入</strong></p>
+<p>Java 可以使用 <code>java.util</code> 包下的<code>Scanner</code> 类来获取用户的输入。使用 <code>import java.util.Scanner;</code> 即可导入 Scanner。</p>
+<pre><code class="language-java">//从键盘输入三个整数，分别计算它们的累加值与平均数；
+import java.util.Scanner;
+
+public class week1_4 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);//实例化Scanner类；
+        int num[] = new int[3];
+        int sum=0;
+        for (int i = 0; i &lt; 3; i++) {
+            num[i] = scanner.nextInt();//使用nextInt方法读取控制台中的整数；
+            sum+=num[i];
+        }
+        System.out.println(&quot;累加值为&quot;+sum);
+        System.out.println(&quot;平均值为&quot;+sum/3);
+        scanner.close();//关闭资源；
+    }
+}
+</code></pre>
+<p><strong>Scanner</strong>类常用方法：</p>
+<p><code>bool hasNextInt()</code> 判断下一个输入是不是整数，若是则返回true；其它类型的以此类推。</p>
+<p><code>int nextInt()</code>读取下一个整数输入；其他类型的以此类推。</p>
+<p><code>String next()</code>不能读空格；</p>
+<p><code>String nextLine()</code>能读空格；</p>
+<blockquote>
+<pre><code class="language-java">//摘自菜鸟教程https://www.runoob.com/java/java-scanner-class.html
+import java.util.Scanner;
+ 
+public class ScannerDemo {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        // 从键盘接收数据
+        int i = 0;
+        float f = 0.0f;
+        System.out.print(&quot;输入整数：&quot;);
+        if (scan.hasNextInt()) {
+            // 判断输入的是否是整数
+            i = scan.nextInt();
+            // 接收整数
+            System.out.println(&quot;整数数据：&quot; + i);
+        } else {
+            // 输入错误的信息
+            System.out.println(&quot;输入的不是整数！&quot;);
+        }
+        System.out.print(&quot;输入小数：&quot;);
+        if (scan.hasNextFloat()) {
+            // 判断输入的是否是小数
+            f = scan.nextFloat();
+            // 接收小数
+            System.out.println(&quot;小数数据：&quot; + f);
+        } else {
+            // 输入错误的信息
+            System.out.println(&quot;输入的不是小数！&quot;);
+        }
+        scan.close();
+    }
+}
+</code></pre>
+</blockquote>
+</li>
+</ol>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[离散数学_图论复习笔记]]></title>
         <id>https://Xu-pixel.github.io/post/chi-san-shu-xue-_-tu-lun-fu-xi-bi-ji/</id>
