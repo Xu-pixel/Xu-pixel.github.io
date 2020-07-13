@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Xu-pixel.github.io</id>
     <title>清苦食铺</title>
-    <updated>2020-07-06T03:34:43.480Z</updated>
+    <updated>2020-07-13T02:35:26.724Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Xu-pixel.github.io"/>
     <link rel="self" href="https://Xu-pixel.github.io/atom.xml"/>
@@ -10,6 +10,274 @@
     <logo>https://Xu-pixel.github.io/images/avatar.png</logo>
     <icon>https://Xu-pixel.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 清苦食铺</rights>
+    <entry>
+        <title type="html"><![CDATA[用Java完成简单的五子棋(超烂的方法]]></title>
+        <id>https://Xu-pixel.github.io/post/yong-java-wan-cheng-jian-dan-de-wu-zi-qi/</id>
+        <link href="https://Xu-pixel.github.io/post/yong-java-wan-cheng-jian-dan-de-wu-zi-qi/">
+        </link>
+        <updated>2020-07-11T01:13:49.000Z</updated>
+        <content type="html"><![CDATA[<figure data-type="image" tabindex="1"><img src="https://Xu-pixel.github.io/post-images/1594607523080.PNG" alt="" loading="lazy"></figure>
+<pre><code class="language-java">import java.util.Scanner;
+//这是游戏开始主程序
+public class ChessStart {
+    public static void main(String[] args) {
+        //初始化棋盘
+        ChessBoard chessBoard=new ChessBoard();
+        chessBoard.showChess();
+
+        //下棋
+        Scanner scanner = new Scanner(System.in);
+        while (scanner.hasNextInt()) {
+
+            //获取下棋指令，例如23表示第二行第三列
+            int row,column,command;
+            command=scanner.nextInt();
+            row=command/10-1;
+            column=command%10-1;
+
+            chessBoard.write(row,column);//向棋盘写入棋子；
+            chessBoard.showChess();//显示当前棋盘；
+            chessBoard.check();//检查胜利条件；
+        }
+        scanner.close();
+    }
+
+}
+</code></pre>
+<pre><code class="language-java">import static java.lang.System.exit;
+//判定什么的全在里面
+public class ChessBoard {
+    //初始化棋盘
+    private int[][] data;
+    private int flag;
+
+    ChessBoard(){
+        data=new int[9][9];
+        flag=0;
+    }
+
+    void showChess(){
+        System.out.println(&quot;棋盘现状&quot;);
+        for (int[] ints : data) {
+            for (int anInt : ints) {
+                if(anInt==0){
+                    System.out.print(&quot;.&quot;+&quot;\t&quot;);
+                }
+                else if(anInt==1){
+                    System.out.print(&quot;●\t&quot;);
+                }
+                else if(anInt==2){
+                    System.out.print(&quot;○\t&quot;);
+                }
+            }
+            System.out.println();
+        }
+    }
+
+    void write(int row,int column){
+        //如果是偶数次就让白子下，也就是1；
+        if(flag%2==0) {
+            if (0 &lt;= row &amp;&amp; row &lt; 9 &amp;&amp; 0 &lt;= column &amp;&amp; column &lt; 9) {
+
+                if(data[row][column]==0) {//下过的位置不能再下了
+                    data[row][column] = 1;
+                    System.out.println(&quot;白子下完了，现在是黑子下：&quot;);
+                    System.out.println();
+                    flag++;
+                }else{
+                    System.out.println(&quot;这里已经下过了，不要再下了&quot;);
+                    System.out.println();
+                }
+
+            } else {
+                System.out.println(&quot;下在了错误的位置,请重试：&quot;);
+                System.out.println();
+            }
+        }else{//否则就让黑子下
+            if (0 &lt;= row &amp;&amp; row &lt; 9 &amp;&amp; 0 &lt;= column &amp;&amp; column &lt; 9) {
+
+                if(data[row][column]==0) {
+                    data[row][column] = 2;
+                    System.out.println(&quot;黑子下完了，现在是白子下：&quot;);
+                    System.out.println();
+                    flag++;
+                }else{
+                    System.out.println(&quot;这里已经下过了，不要再下了&quot;);
+                    System.out.println();
+                }
+
+            } else {
+                System.out.println(&quot;下在了错误的位置,请重试：&quot;);
+                System.out.println();
+            }
+        }
+    }
+
+    void check(){
+        for (int i = 0; i &lt; 9; i++) {
+            for (int i1 = 0; i1 &lt; 9; i1++) {
+                ChessFlag chessWhiteFlag= new ChessFlag();
+                ChessFlag chessBlackFlag= new ChessFlag();
+                checkLeftDown(i,i1, chessWhiteFlag,chessBlackFlag);
+                checkDown(i,i1, chessWhiteFlag,chessBlackFlag);
+                checkRightDown(i,i1, chessWhiteFlag,chessBlackFlag);
+                checkRight(i,i1, chessWhiteFlag,chessBlackFlag);
+                if (chessWhiteFlag.leftDownFlag==5){
+                    System.out.println(&quot;白子获胜&quot;);
+                    exit(0);
+                }
+                if (chessWhiteFlag.downFlag==5){
+                    System.out.println(&quot;白子获胜&quot;);
+                    exit(0);
+                }
+                if (chessWhiteFlag.rightDownFlag==5){
+                    System.out.println(&quot;白子获胜&quot;);
+                    exit(0);
+                }
+                if (chessWhiteFlag.rightFlag==5){
+                    System.out.println(&quot;白子获胜&quot;);
+                    exit(0);
+                }
+                if (chessBlackFlag.leftDownFlag==5){
+                    System.out.println(&quot;黑子获胜&quot;);
+                    exit(0);
+                }
+                if (chessBlackFlag.downFlag==5){
+                    System.out.println(&quot;黑子获胜&quot;);
+                    exit(0);
+                }
+                if (chessBlackFlag.rightDownFlag==5){
+                    System.out.println(&quot;黑子获胜&quot;);
+                    exit(0);
+                }
+                if (chessBlackFlag.rightFlag==5){
+                    System.out.println(&quot;黑子获胜&quot;);
+                    exit(0);
+                }
+            }
+        }
+    }
+
+    //递归检查每个子左下
+    void checkLeftDown(int row,int column,ChessFlag chessFlag1,ChessFlag chessFlag2){
+        //检查是否越界
+        if (0 &lt;= row &amp;&amp; row &lt; 9 &amp;&amp; 0 &lt;= column &amp;&amp; column &lt; 9){
+
+            //白子检查
+            if(data[row][column]==1){
+                chessFlag1.leftDownFlag++;
+                checkLeftDown(row+1,column-1,chessFlag1,chessFlag2);
+            }else{
+                if(chessFlag1.leftDownFlag!=5)
+                chessFlag1.leftDownFlag=0;
+            }
+
+
+            //黑子检查
+            if(data[row][column]==2){
+                chessFlag2.leftDownFlag++;
+                checkLeftDown(row+1,column-1,chessFlag1,chessFlag2);
+            }else{
+                if(chessFlag2.leftDownFlag!=5)
+                chessFlag2.leftDownFlag=0;
+            }
+        }
+    }
+
+    //递归检查每个子下
+    void checkDown(int row,int column,ChessFlag chessFlag1,ChessFlag chessFlag2){
+        //检查是否越界
+        if (0 &lt;= row &amp;&amp; row &lt; 9 &amp;&amp; 0 &lt;= column &amp;&amp; column &lt; 9){
+            if(data[row][column]==1){
+                chessFlag1.downFlag++;
+                checkDown(row+1,column,chessFlag1,chessFlag2);
+            }else{
+                if(chessFlag1.downFlag!=5)
+                chessFlag1.downFlag=0;
+            }
+
+
+            //黑子检查
+            if(data[row][column]==2){
+                chessFlag2.downFlag++;
+                checkDown(row+1,column,chessFlag1,chessFlag2);
+            }else{
+                if(chessFlag2.downFlag!=5)
+                chessFlag2.downFlag=0;
+            }
+
+        }
+    }
+
+    //递归检查每个子右下
+    void checkRightDown(int row,int column,ChessFlag chessFlag1,ChessFlag chessFlag2){
+        //检查是否越界
+        if (0 &lt;= row &amp;&amp; row &lt; 9 &amp;&amp; 0 &lt;= column &amp;&amp; column &lt; 9){
+            if(data[row][column]==1){
+                chessFlag1.rightDownFlag++;
+                checkRightDown(row+1,column+1,chessFlag1,chessFlag2);
+            }else{
+                if(chessFlag1.rightDownFlag!=5)
+                chessFlag1.rightDownFlag=0;
+            }
+
+
+            //黑子检查
+            if(data[row][column]==2){
+                chessFlag2.rightDownFlag++;
+                checkRightDown(row+1,column+1,chessFlag1,chessFlag2);
+            }else{
+                if(chessFlag2.rightDownFlag!=5)
+                chessFlag2.rightDownFlag=0;
+            }
+
+        }
+    }
+
+    //递归检查每个子右
+    void checkRight(int row,int column,ChessFlag chessFlag1,ChessFlag chessFlag2){
+        //检查是否越界
+        if (0 &lt;= row &amp;&amp; row &lt; 9 &amp;&amp; 0 &lt;= column &amp;&amp; column &lt; 9){
+            if(data[row][column]==1){
+                chessFlag1.rightFlag++;
+                checkRight(row,column+1,chessFlag1,chessFlag2);
+            }else{
+                if(chessFlag1.rightFlag!=5)
+                chessFlag1.rightFlag=0;
+            }
+
+
+            //黑子检查
+            if(data[row][column]==2){
+                chessFlag2.rightFlag++;
+                checkRight(row,column+1,chessFlag1,chessFlag2);
+            }else{
+                if(chessFlag2.rightFlag!=5)
+                chessFlag2.rightFlag=0;
+            }
+
+        }
+    }
+}
+
+</code></pre>
+<pre><code class="language-java">//用于记录判断胜利条件的flag
+public class ChessFlag {
+    public int leftDownFlag;
+    public int downFlag;
+    public int rightDownFlag;
+    public int rightFlag;
+
+    ChessFlag(){
+        leftDownFlag=0;
+        downFlag=0;
+        rightDownFlag=0;
+        rightFlag=0;
+    }
+}
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Java学习第一周 Day1]]></title>
         <id>https://Xu-pixel.github.io/post/java-xue-xi-di-yi-zhou/</id>
