@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://Xu-pixel.github.io</id>
     <title>清苦食铺</title>
-    <updated>2020-07-23T09:01:19.754Z</updated>
+    <updated>2020-07-23T09:05:05.687Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://Xu-pixel.github.io"/>
     <link rel="self" href="https://Xu-pixel.github.io/atom.xml"/>
@@ -33,7 +33,7 @@ ServerSocket serverSocket = new ServerSocket(9000);
 <h4 id="3文件传输以及接收">3.文件传输以及接收</h4>
 <p>​		接下来就是枯燥的输入输出流套来套去了。懒得一片一片截了，我就直接全部代码了。</p>
 <p>下图是我对输入输出的理解了，示意图片从客户端到服务端：</p>
-<figure data-type="image" tabindex="1"><img src="D:%5Cblog_post%5Cimages%5CIO_%E7%BD%91%E7%BB%9C.PNG" alt="IO_网络" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="https://Xu-pixel.github.io/post-images/1595495044652.PNG" alt="" loading="lazy"></figure>
 <pre><code class="language-java">package Week3Day1.Demo02.Learn02;
 
 import java.io.*;
