@@ -36,8 +36,20 @@
             <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#1%E6%95%B0%E7%BB%84%E7%9A%84%E5%A3%B0%E6%98%8E%E5%92%8C%E5%88%9D%E5%A7%8B%E5%8C%96">1.数组的声明和初始化</a></li>
-<li><a href="#2%E6%8E%A7%E5%88%B6%E5%8F%B0%E8%BE%93%E5%85%A5">2.控制台输入</a></li>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#1%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2">1.写在前面</a></li>
+<li><a href="#2%E5%87%86%E5%A4%87socket">2.准备Socket</a></li>
+<li><a href="#3%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E4%BB%A5%E5%8F%8A%E6%8E%A5%E6%94%B6">3.文件传输以及接收</a></li>
+<li><a href="#4%E9%80%9A%E7%9F%A5%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%B7%B2%E4%BC%A0%E8%BE%93%E5%AE%8C%E6%AF%95">4.通知服务器客户端已传输完毕</a></li>
+<li><a href="#5%E5%85%B3%E4%BA%8Eio%E7%9A%84%E9%83%A8%E5%88%86">5.关于IO的部分</a></li>
+<li><a href="#6%E5%85%B3%E9%97%AD%E8%B5%84%E6%BA%90">6.关闭资源</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -86,115 +98,151 @@
 <div class="mask" onclick="closeMenu()">
 </div>
       <div class="content-wrapper py-32 lg:p-8 lg:w-3/4 post-detail animated fadeIn">
-        <h1 class="text-3xl font-bold lg:mt-16">Java学习第一周 Day1</h1>
+        <h1 class="text-3xl font-bold lg:mt-16">IO和网络的学习</h1>
         <div class="text-sm text-gray-700 lg:my-8">
-          2020-07-06 / 3 min read
+          2020-07-23 / 4 min read
         </div>
-        
-          <img class="post-feature-image rounded-lg mx-auto my-4" src="https://Xu-pixel.github.io/post-images/java-xue-xi-di-yi-zhou.png" alt="">
         
         <div class="post-content yue">
-          <blockquote>
-<p>记录一下学到的，懂了就不记辽~</p>
-</blockquote>
-<h2 id="1数组的声明和初始化">1.数组的声明和初始化</h2>
-<pre><code class="language-java">//动态初始化
-int[] intArray = new int[number];
-//或者
-int intArray[] = new int[number];
+          <h4 id="1写在前面">1.写在前面</h4>
+<p>​		今天的练习是文件传输。网络编程涉及到不少IO的知识（因为都是和输入输出流密不可分嘛），所以等于学习网络部分的时候IO部分一起复习（预习）。首先准备两个类和一张图片，一个类为客户端另一个为服务器端。任务是把客户端的图片上传到服务器端。代码都是跟着狂神老师敲的，一模一样。但是我有好好理解哦。</p>
+<h4 id="2准备socket">2.准备Socket</h4>
+<p>​		客户端是简单的Socket类，服务端是先用Serversocket监听请求，再将请求连接到Socket。</p>
+<pre><code class="language-java">//主函数不要忘记抛出异常
 
-//静态初始化
-int[] intArray = {1,2,3,4};
-//或者
-int intArray[] = {1,2,3,4};
+//客户端建立套接字
+//套接字要输入目标IP和端口号，127.0.0.1即为本机地址，9000是等下服务器端打开的
+Socket socket = new Socket(InetAddress.getByName(&quot;127.0.0.1&quot;), 9000);
+
+//服务器端建立套接字
+//建立服务端套接字,打开端口；
+ServerSocket serverSocket = new ServerSocket(9000);
 </code></pre>
-<h2 id="2控制台输入">2.控制台输入</h2>
-<p>Java 可以使用 <code>java.util</code> 包下的<code>Scanner</code> 类来获取用户的输入。使用 <code>import java.util.Scanner;</code> 即可导入 Scanner。</p>
-<pre><code class="language-java">//从键盘输入三个整数，分别计算它们的累加值与平均数；
-import java.util.Scanner;
+<h4 id="3文件传输以及接收">3.文件传输以及接收</h4>
+<p>​		接下来就是枯燥的输入输出流套来套去了。懒得一片一片截了，我就直接全部代码了。</p>
+<p>下图是我对输入输出的理解了，示意图片从客户端到服务端：</p>
+<figure data-type="image" tabindex="1"><img src="D:%5Cblog_post%5Cimages%5CIO_%E7%BD%91%E7%BB%9C.PNG" alt="IO_网络" loading="lazy"></figure>
+<pre><code class="language-java">package Week3Day1.Demo02.Learn02;
 
-public class week1_4 {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);//实例化Scanner类；
-        int num[] = new int[3];
-        int sum=0;
-        for (int i = 0; i &lt; 3; i++) {
-            num[i] = scanner.nextInt();//使用nextInt方法读取控制台中的整数；
-            sum+=num[i];
+import java.io.*;
+import java.net.InetAddress;
+import java.net.Socket;
+
+public class MyClient02 {
+    public static void main(String[] args) throws Exception{
+        //建立套接字
+        Socket socket = new Socket(InetAddress.getByName(&quot;127.0.0.1&quot;), 9000);
+
+        //创建一个接在Socket上的输出流
+        OutputStream outputStream = socket.getOutputStream();
+
+        //读取文件
+        FileInputStream fileInputStream = new FileInputStream(new File(&quot;src\\Stardust.png&quot;));
+
+        //向输出流写入文件
+        byte[] buffer = new byte[1024];
+        int len;
+        while ((len=fileInputStream.read(buffer))!=-1){
+            outputStream.write(buffer,0,len);
         }
-        System.out.println(&quot;累加值为&quot;+sum);
-        System.out.println(&quot;平均值为&quot;+sum/3);
-        scanner.close();//关闭资源；
+
+        //通知服务器已经传输完毕
+        socket.shutdownOutput();
+
+        //接收服务器传来的传输成功信息
+        InputStream infoFromServer = socket.getInputStream();
+
+        //建立一个用于接收输出流的管道
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+
+        //从输入流流向baos管道
+        byte[] buffer2 = new byte[1024];
+        len = 0;
+        while ((len = infoFromServer.read(buffer2))!=-1){
+            baos.write(buffer2);
+        }
+        System.out.println(baos.toString());
+
+        //关闭用于接收回信的资源
+        baos.close();
+        infoFromServer.close();
+
+        //关闭资源
+        fileInputStream.close();
+        outputStream.close();
+        socket.close();
     }
 }
 </code></pre>
-<p><strong>Scanner</strong>类常用方法：</p>
-<p><code>bool hasNextInt()</code> 判断下一个输入是不是整数，若是则返回true；其它类型的以此类推。</p>
-<p><code>int nextInt()</code>读取下一个整数输入；其他类型的以此类推。</p>
-<p><code>String next()</code>不能读空格；</p>
-<p><code>String nextLine()</code>能读空格；</p>
-<blockquote>
-<pre><code class="language-java">//摘自菜鸟教程https://www.runoob.com/java/java-scanner-class.html
-import java.util.Scanner;
- 
-public class ScannerDemo {
-    public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
-        // 从键盘接收数据
-        int i = 0;
-        float f = 0.0f;
-        System.out.print(&quot;输入整数：&quot;);
-        if (scan.hasNextInt()) {
-            // 判断输入的是否是整数
-            i = scan.nextInt();
-            // 接收整数
-            System.out.println(&quot;整数数据：&quot; + i);
-        } else {
-            // 输入错误的信息
-            System.out.println(&quot;输入的不是整数！&quot;);
+<pre><code class="language-java">package Week3Day1.Demo02.Learn02;
+
+import java.io.*;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+public class MyServer02 {
+    public static void main(String[] args) throws Exception{
+        //建立服务端套接字,打开端口；
+        ServerSocket serverSocket = new ServerSocket(9000);
+
+        //监听
+        Socket socket = serverSocket.accept();
+
+        //连接上输出流
+        InputStream inputStream = socket.getInputStream();
+
+        //读取数据
+        //1.先准备一个接收的文件
+        FileOutputStream fileOutputStream= new FileOutputStream(new File(&quot;receive.png&quot;));
+        //2.开始接收
+        byte[] buffer = new byte[1024];
+        int len;
+        while ((len = inputStream.read(buffer))!=-1){
+            //写道输出流里去
+            fileOutputStream.write(buffer,0,len);
         }
-        System.out.print(&quot;输入小数：&quot;);
-        if (scan.hasNextFloat()) {
-            // 判断输入的是否是小数
-            f = scan.nextFloat();
-            // 接收小数
-            System.out.println(&quot;小数数据：&quot; + f);
-        } else {
-            // 输入错误的信息
-            System.out.println(&quot;输入的不是小数！&quot;);
-        }
-        scan.close();
+
+        //告诉客户端接收完毕了
+        OutputStream serverOut = socket.getOutputStream();
+        serverOut.write(&quot;服务器成功接收了图片&quot;.getBytes());
+
+        //关闭资源
+        fileOutputStream.close();
+        inputStream.close();
+        socket.close();
+        serverSocket.close();
     }
 }
 </code></pre>
-</blockquote>
+<h4 id="4通知服务器客户端已传输完毕">4.通知服务器客户端已传输完毕</h4>
+<p>​		因为服务器端是还有信息要发的（告诉客户端收到了），如果客户端不告诉服务器端我已经不要发东西了，客户端会一直等。</p>
+<pre><code class="language-java">//通知服务器已经传输完毕
+socket.shutdownOutput();
+</code></pre>
+<h4 id="5关于io的部分">5.关于IO的部分</h4>
+<p>​		我是只懂得从输入流到输出流之间得套路代码：</p>
+<pre><code class="language-java">byte[] buffer = new byte[1024];//1024的缓存
+int len;
+while ((len=fileInputStream.read(buffer))!=-1){//read方法会返回一个数字，这个数字表示读取了多少个字节，如果输出流已经读取完了，就会返回1.
+	outputStream.write(buffer,0,len);//把缓存写到输出流里
+}
+</code></pre>
+<h4 id="6关闭资源">6.关闭资源</h4>
+<p>​		水龙头关水，先开后关（？？？我也不懂这两句有什么关系哈哈哈）。反正关闭资源（什么流啊、套接字啊）是好习惯。</p>
 
         </div>
 
-        
-          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://Xu-pixel.github.io/tag/QPYlUohkS/">
-            <span class="flex-auto">小学期java</span>
-          </a>
         
 
 
         <div class="flex justify-between py-8">
           
-            <div class="prev-post">
-              <a href="https://Xu-pixel.github.io/post/yong-java-wan-cheng-jian-dan-de-wu-zi-qi/">
-                <h3 class="post-title">
-                  <i class="ri-arrow-left-line"></i>
-                  用Java完成简单的五子棋(超烂的方法
-                </h3>
-              </a>
-            </div>
-          
 
           
             <div class="next-post">
-              <a href="https://Xu-pixel.github.io/post/chi-san-shu-xue-_-tu-lun-fu-xi-bi-ji/">
+              <a href="https://Xu-pixel.github.io/post/yong-java-wan-cheng-jian-dan-de-wu-zi-qi/">
                 <h3 class="post-title">
-                  离散数学_图论复习笔记
+                  用Java完成简单的五子棋(超烂的方法
                   <i class="ri-arrow-right-line"></i>
                 </h3>
               </a>
